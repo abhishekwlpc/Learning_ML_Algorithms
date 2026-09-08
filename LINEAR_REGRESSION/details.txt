@@ -1,0 +1,19 @@
+ALGORITHM #1 — LINEAR REGRESSION
+
+Definition: Linear Regression is a statistical and Machine Learning method to find the best straight-line relationship between dependent output variable and one or more independent input variables. 
+
+Problem: Given one or more input features, predict a continuoes numerical value.
+
+Model: Finds a linear Relationship betweeen input features and the numerical target
+
+Loss: Measures how far model's predictions are from the actual values. A common loss for Linear Regression is MSE(Mean Squard Error).
+
+Optimization: Adjust the model's weight and bias to minimize the loss, commonly using Gradient Descent.
+
+NumPy: Implement the core mechanics manually.
+
+scikit-learn: Use the ready-made LinearRegression implementation.
+
+When to use: When target is a continuous numerical value and a roughly linear relatuionship is reasonable.
+
+When NOT to use: When the target is Categorical, or when the relationship between features and target is strongly non-linear and Linear regression is a poor fit.  
