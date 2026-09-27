@@ -1,44 +1,31 @@
 import numpy as np
 
-x = np.array([1, 2, 3, 4, 5], dtype=float)
-y = np.array([2, 4, 6, 8, 10], dtype=float)
+x = np.array([1,2,3,4,5], dtype=float)
+y = np.array([2.3, 3.7, 6.2, 7.8, 10.5], dtype=float)
 
-w = 1
-b = 1
-predicted_output_array = np.array([], dtype=float)
-error_array = np.array([], dtype=float)
+w =1.0
+b =1.0
 
-predicted_output_array = w * x + b
-
-error_array = y - predicted_output_array
-
-total_error = np.sum(error_array ** 2)
-
-gradient_w = -2 * np.sum(x * error_array) / len(x)
-gradient_b = -2 * np.sum(error_array) / len(x)
-
-print("Predictions:", predicted_output_array)
-print("Errors:", error_array)
-print("Squared Errors:", total_error)
-print("MSE:", total_error/len(error_array))
-print("Gradient w:", gradient_w)
-print("Gradient b:", gradient_b)
 
 learning_rate = 0.01
-epochs = 10000
+epochs = 5000
 
-for epoch in range(epochs):
+w_new = w
+b_new = b
 
-    predicted_output = w * x + b
+for i in range(epochs):
 
-    error = y - predicted_output
+    prediction = (w_new * x) + b_new
 
-    mse = np.mean(error ** 2)
+    mse_error = np.mean((prediction - y) ** 2)
 
-    gradient_w = -2 * np.sum(x * error) / len(x)
-    gradient_b = -2 * np.sum(error) / len(x)
+    error = prediction - y
 
-    w = w - learning_rate * gradient_w
-    b = b - learning_rate * gradient_b
+    w_gradient = 2/len(x) * (x *error ).sum()
 
-    print(f"Epoch {epoch + 1}: w={w:.4f}, b={b:.4f}, MSE={mse:.4f}")
+    b_gradient = 2/len(x) * (error.sum())
+
+    w_new = w_new - (learning_rate * w_gradient)
+
+    b_new = b_new - (learning_rate * b_gradient)
+    print(i,": |W value:" , w_new, "| B value: ", b_new, "| MSE error: ", mse_error)
